@@ -7,6 +7,7 @@
 ## Skills & Tools
 
 Python 3: `pandas`, `numpy`, `matplotlib`, `seaborn`, `scikit-learn` (KMeans, PCA, StandardScaler, silhouette_score) 
+
 Concepts: Unsupervised Learning, Clustering, LRFMC Framework, EDA, Feature Engineering, Dimensionality Reduction, CLTV
 
 ---
@@ -93,7 +94,7 @@ Proxy CLTV     = Revenue Proxy × Frequency Rate × Recency Weight × 12
 
 ### Priority Matrix
 
-![Proxy CLTV per Cluster](00. Asset/Fig 2. Proxy CLTV per Cluster.png)
+<img src="00. Asset/Fig 2. Proxy CLTV per Cluster.png" width="400" alt="Alt text">
 
 ```
 Priority 1 (Retain):    C3 — Champion Traveler    → Highest CLTV, highest revenue impact
