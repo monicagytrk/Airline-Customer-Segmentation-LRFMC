@@ -43,6 +43,7 @@ Standard RFM segmentation is insufficient for airlines because it does not accou
 - **Implausible value removal:** Removed customers with age <10 or >100, flight count = 0, mileage = 0, and zero ticket purchase history
 - **Outlier handling:** IQR-based capping (Winsorization) applied to all numerical features
 - **Feature engineering:** 23 raw features transformed into 5 LRFMC features:
+
 | Feature | Column | Description |
 |---|---|---|
 | L — Length | `LOAD_TIME` - `FFP_DATE` | Membership duration in months |
@@ -81,7 +82,7 @@ Proxy CLTV     = Revenue Proxy × Frequency Rate × Recency Weight × 12
  
 ### Cluster Overview
 
-![Alt text](image-url-or-path)
+![PCA Scater Plot](00. Asset/Fig 1. PCA Scater Plot.png)
  
 | Cluster | Label | Members | Share | Proxy CLTV/Member |
 |---|---|---|---|---|
@@ -90,3 +91,23 @@ Proxy CLTV     = Revenue Proxy × Frequency Rate × Recency Weight × 12
 | C3 | Champion Traveler | 12,328 | 19.7% | **12,878** |
 | C4 | Price-Driven New Member | 22,901 | 36.5% | 1,458 |
 
+### Priority Matrix
+
+![Proxy CLTV per Cluster](00. Asset/Fig 2. Proxy CLTV per Cluster.png)
+
+```
+Priority 1 (Retain):    C3 — Champion Traveler    → Highest CLTV, highest revenue impact
+Priority 2 (Grow):      C4 — Price-Driven New     → Largest segment, strong growth potential
+Priority 3 (Re-engage): C2 — Loyal Veteran        → Valuable history, declining engagement
+Priority 4 (Win-back):  C1 — At-Risk of Churn     → Lowest CLTV, budget reallocation if unresponsive
+```
+ 
+---
+## Next Steps
+ 
+1. **Investigate overlap between C2 and C4** — both clusters show similar F and M values (~8 flights, ~10–11k km). Adding features like route type or cabin class could improve separation.
+2. **Feature engineering** — Create derived features such as `flight_rate` (F/L = flights per month) and `recency_ratio` (R/L) to better differentiate active veterans from dormant members.
+
+---
+ 
+*For questions or feedback, feel free to open an issue or reach out via GitHub.*
