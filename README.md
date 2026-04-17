@@ -83,7 +83,7 @@ Proxy CLTV     = Revenue Proxy × Frequency Rate × Recency Weight × 12
  
 ### Cluster Overview
 
-![PCA Scater Plot](00. Asset/Fig 1. PCA Scater Plot.png)
+<img src="00. Asset/Fig 1. PCA Scater Plot.png" width="800" alt="Alt text">
  
 | Cluster | Label | Members | Share | Proxy CLTV/Member |
 |---|---|---|---|---|
@@ -94,7 +94,7 @@ Proxy CLTV     = Revenue Proxy × Frequency Rate × Recency Weight × 12
 
 ### Priority Matrix
 
-<img src="00. Asset/Fig 2. Proxy CLTV per Cluster.png" width="400" alt="Alt text">
+<img src="00. Asset/Fig 2. Proxy CLTV per Cluster.png" width="800" alt="Alt text">
 
 ```
 Priority 1 (Retain):    C3 — Champion Traveler    → Highest CLTV, highest revenue impact
