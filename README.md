@@ -1,6 +1,6 @@
 # Airline Customer Segmentation — LRFMC
  
-> Unsupervised machine learning project applying K-Means clustering on airline loyalty data to segment customers based on the LRFMC framework and provide data-driven marketing strategy recommendations.
+Customer segmentation on airline loyalty data using LRFMC model and K-Means clustering to identify 5 distinct groups based on customer transaction behavior and provide data-driven marketing strategy recommendations.
  
 ---
 
@@ -83,7 +83,7 @@ Proxy CLTV     = Revenue Proxy × Frequency Rate × Recency Weight × 12
  
 ### Cluster Overview
 
-<img src="00. Asset/Fig 1. PCA Scater Plot.png" width="800" alt="Alt text">
+<img src="00. Asset/Fig 1. PCA Scater Plot.png" width="1100" alt="Alt text">
  
 | Cluster | Label | Members | Share | Proxy CLTV/Member |
 |---|---|---|---|---|
