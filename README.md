@@ -6,25 +6,22 @@ Customer segmentation on airline loyalty data using LRFMC model and K-Means clus
 
 ## Skills & Tools
 
-Python 3: `pandas`, `numpy`, `matplotlib`, `seaborn`, `scikit-learn` (KMeans, PCA, StandardScaler, silhouette_score) 
+Python 3: pandas, numpy, matplotlib, seaborn, scikit-learn (KMeans, PCA, StandardScaler, silhouette_score) 
 
 Concepts: Unsupervised Learning, Clustering, LRFMC Framework, EDA, Feature Engineering, Dimensionality Reduction, CLTV
 
 ---
-## Executive Summary
- 
-This project performs customer segmentation on an airline loyalty program dataset using the **LRFMC model** (Length, Recency, Frequency, Monetary, Coefficient of Fare Discount) and **K-Means clustering**. By analyzing 62,727 customer records across 5 behavioral dimensions, the model identifies **4 distinct customer segments**, each with unique characteristics and actionable business strategies.
- 
-The analysis goes beyond simple clustering — it incorporates **Proxy CLTV (Customer Lifetime Value)** scoring to rank segments by estimated business value, enabling the marketing team to prioritize budget allocation with a data-driven foundation.
- 
-**Key Finding:** Cluster 3 (Champion Traveler), while the smallest segment (19.7%), holds the highest Proxy CLTV per member at 12,877 — making it the highest-priority segment for retention investment.
- 
----
 ## Methodology
  
+This study presents a comprehensive customer segmentation analysis utilizing a 2014 airline loyalty dataset of nearly 63,000 records. The methodology begins with rigorous data preparation, encompassing the imputation of missing values, removal of implausible entries, IQR-based outlier winsorization, and the engineering of five core LRFMC features (Length, Recency, Frequency, Monetary, and Discount). Following exploratory data analysis to assess feature distributions and multicollinearity, the data was standardized and processed through a K-Means++ clustering algorithm. An optimal four-cluster solution (K=4) was established using the Elbow method and Silhouette scores (achieving an overall score of 0.270), while Principal Component Analysis (PCA) was applied to map 67% of the variance for 2D visualization. Finally, to evaluate the financial viability of these segments, a relative Proxy Customer Lifetime Value (CLTV) score was computed for each member by integrating revenue proxies, frequency rates, and recency weights.
 
+**Key Finding:** Cluster 3 (Champion Traveler), while the smallest segment (19.7%), holds the highest Proxy CLTV per member at 12,877 — making it the highest-priority segment for retention investment.
 
+## Results & Business Recommendations
 
+<img src="00. Asset/05. Insight 1.jpg" width="1000" alt="Alt text">
+
+<img src="00. Asset/06. Insight 2.jpg" width="1000" alt="Alt text">
 
 A relative CLTV score was computed per member using three behavioral dimensions:
  
@@ -36,12 +33,8 @@ Proxy CLTV     = Revenue Proxy × Frequency Rate × Recency Weight × 12
 ```
  
 > Note: Proxy CLTV is a relative score for cluster comparison — not an absolute monetary value.
-
-## Results & Business Recommendations
  
 ### Cluster Overview
-
-
 
 <img src="00. Asset/Fig 1. PCA Scater Plot.png" width="1100" alt="Alt text">
  
@@ -63,12 +56,6 @@ Priority 3 (Re-engage): C2 — Loyal Veteran        → Valuable history, declin
 Priority 4 (Win-back):  C1 — At-Risk of Churn     → Lowest CLTV, budget reallocation if unresponsive
 ```
  
----
-## Next Steps
- 
-1. **Investigate overlap between C2 and C4** — both clusters show similar F and M values (~8 flights, ~10–11k km). Adding features like route type or cabin class could improve separation.
-2. **Feature engineering** — Create derived features such as `flight_rate` (F/L = flights per month) and `recency_ratio` (R/L) to better differentiate active veterans from dormant members.
-
 ---
  
 *For questions or feedback, feel free to open an issue or reach out via GitHub.*
