@@ -20,54 +20,12 @@ The analysis goes beyond simple clustering — it incorporates **Proxy CLTV (Cus
 **Key Finding:** Cluster 3 (Champion Traveler), while the smallest segment (19.7%), holds the highest Proxy CLTV per member at 12,877 — making it the highest-priority segment for retention investment.
  
 ---
-# Business Problem
- 
-Airline loyalty programs generate large volumes of customer behavioral data, but without proper segmentation, marketing efforts tend to be one-size-fits-all — inefficient and costly.
- 
-**Core questions this project addresses:**
-- Which customers are most valuable and should be retained at all costs?
-- Which customers are at risk of churning and need win-back campaigns?
-- How should marketing budget be allocated across different customer segments?
-- What does each segment need in terms of engagement strategy?
-Standard RFM segmentation is insufficient for airlines because it does not account for **flight distance (mileage)** and **fare discount behavior** — two dimensions critical to understanding airline customer value. The LRFMC framework was chosen specifically to address this gap.
- 
----
 ## Methodology
  
-### 1. Data Understanding
-- Dataset: Airline customer loyalty records from 2014
-- Raw data: 62,988 instances × 23 features
-- Features cover personal info, flight history, and loyalty program activity
-### 2. Data Preparation
-- **Missing value handling:** Features with <20% missing rate replaced with median/mode; no features exceeded the 20% drop threshold
-- **Duplicate handling:** No duplicates found
-- **Implausible value removal:** Removed customers with age <10 or >100, flight count = 0, mileage = 0, and zero ticket purchase history
-- **Outlier handling:** IQR-based capping (Winsorization) applied to all numerical features
-- **Feature engineering:** 23 raw features transformed into 5 LRFMC features:
 
-| Feature | Column | Description |
-|---|---|---|
-| L — Length | `LOAD_TIME` - `FFP_DATE` | Membership duration in months |
-| R — Recency | `LAST_TO_END` | Days since last flight |
-| F — Frequency | `FLIGHT_COUNT` | Total flights during membership |
-| M — Monetary | `SEG_KM_SUM` | Total km flown |
-| C — Discount | `avg_discount` | Average fare discount coefficient |
- 
-### 3. Data Exploration (EDA)
-- **Distribution analysis:** Histogram/KDE plots revealed right-skewed distributions for L, R, F, M — confirming the need for StandardScaler before clustering
-- **Outlier confirmation:** Boxplots validated IQR-capped boundaries per feature
-- **Correlation analysis:** Heatmap identified high multicollinearity between F and M (r = 0.89)
-- **Scatter plots:** Key feature pair relationships confirmed meaningful behavioral patterns
-### 4. Model Development
-- **Preprocessing:** StandardScaler applied to all 5 LRFMC features before clustering
-- **Optimal K selection:** Elbow Method (inertia) + Silhouette Score evaluated for K = 2–10
-- **Final model:** K-Means++ with K=4, chosen because silhouette score at K=4 (0.270) is higher than K=5 (0.247) and K=4 marks the point where inertia reduction begins to plateau
-- **Dimensionality reduction:** PCA (2 components, 67% variance retained) used for scatter plot visualization only — not applied before clustering
-### 5. Model Validation
-- Overall Silhouette Score: **0.270** (cluster structure present, some overlap expected for real-world customer data)
-- Per-cluster silhouette scores evaluated with mean, std, and negative sample percentage
-- PCA variance plot confirmed PC1 (46.7%) + PC2 (20.3%) = 67% of total variance captured in 2D visualization
-### 6. Proxy CLTV Scoring
+
+
+
 A relative CLTV score was computed per member using three behavioral dimensions:
  
 ```
@@ -82,6 +40,8 @@ Proxy CLTV     = Revenue Proxy × Frequency Rate × Recency Weight × 12
 ## Results & Business Recommendations
  
 ### Cluster Overview
+
+
 
 <img src="00. Asset/Fig 1. PCA Scater Plot.png" width="1100" alt="Alt text">
  
